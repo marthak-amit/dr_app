@@ -73,3 +73,9 @@ Mock data lives in `lib/data/mock/*.dart` and fake latency comes from `fakeLaten
 ## Assets & licensing
 
 All assets are generated locally and bundled: doctor portraits are illustrated avatars (DiceBear *Avataaars*, free licence), icons are Lucide (ISC), clinic art and onboarding illustrations were composed for this prototype, and the Lottie animations are hand-authored. All names, clinics, phone numbers and addresses are fictional.
+
+## Downloads & screenshots
+
+- Ready-to-install Android build: [`releases/MediQ-prototype.apk`](releases/MediQ-prototype.apk) (release, signed with the debug key — fine for demos).
+- Screenshots of every screen (390×844 @2x, light + dark): [`screenshots/`](screenshots/) — start with the `overview_*.png` contact sheets.
+- iOS: open `ios/` in Xcode on a Mac (`flutter build ios`); no code changes needed.
