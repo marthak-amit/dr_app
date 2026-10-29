@@ -40,7 +40,7 @@ class _PrescriptionDetailScreenState extends ConsumerState<PrescriptionDetailScr
           child: Row(children: [
             Icon(Icons.local_shipping_rounded, color: p.primary),
             const SizedBox(width: 12),
-            Expanded(child: Text('${AppConfig.appName} Pharmacy · Delivery in 2 hours', style: ctx.tt.titleSmall.copyWith(color: p.primary))),
+            Expanded(child: Text('${AppConfig.appName} Pharmacy · Delivery in 2 hours', style: ctx.tt.titleSmall!.copyWith(color: p.primary))),
           ]),
         ),
         const SizedBox(height: 14),
