@@ -76,9 +76,8 @@ All assets are generated locally and bundled: doctor portraits are illustrated a
 
 ## Downloads & screenshots
 
-- **Install this on almost every phone (2017+):** [`releases/MediQ-arm64-v8a.apk`](releases/MediQ-arm64-v8a.apk) (22 MB). Older 32-bit phones: [`releases/MediQ-armeabi-v7a.apk`](releases/MediQ-armeabi-v7a.apk).
-- Requires Android 7.0+. Signed with a real release key (v2 + v3 signature), 16 KB page-aligned, R8-shrunk.
-- If Android says *App not installed*: uninstall any older MediQ first (earlier builds used a different signing key), then allow *Install unknown apps* for the app you open the APK from.
+- **Install:** [`releases/MediQ.apk`](releases/MediQ.apk) — one universal release APK (arm64 + arm32 + x86_64), Android 7.0+ (the minimum Flutter itself supports), signed with a real release key (v2 + v3).
+- If Android says *App not installed*: uninstall any older MediQ first (earlier builds used a different signing key), and allow *Install unknown apps* for the app you open the APK from.
 - Screenshots of every screen (390×844 @2x, light + dark): [`screenshots/`](screenshots/) — start with the `overview_*.png` contact sheets.
 - iOS: open `ios/` in Xcode on a Mac (`flutter build ios`).
 
