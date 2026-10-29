@@ -24,7 +24,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    if (widget.specialtyId != null) ref.read(searchFilterProvider.notifier).setSpecialty(widget.specialtyId);
+    if (widget.specialtyId != null) {
+      Future.microtask(() => ref.read(searchFilterProvider.notifier).setSpecialty(widget.specialtyId));
+    }
   }
 
   @override

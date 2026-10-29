@@ -215,12 +215,12 @@ class _QueueShimmer extends StatelessWidget {
   const _QueueShimmer();
   @override
   Widget build(BuildContext context) {
-    return const Column(children: [
+    return const SingleChildScrollView(physics: NeverScrollableScrollPhysics(), child: Column(children: [
       ShimmerBox(height: 230, radius: 28),
       SizedBox(height: 16),
       ShimmerBox(height: 96, radius: 20),
       SizedBox(height: 16),
       ShimmerBox(height: 200, radius: 20),
-    ]);
+    ]));
   }
 }

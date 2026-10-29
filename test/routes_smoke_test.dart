@@ -73,6 +73,11 @@ void main() {
             tester.view.physicalSize = size;
             tester.view.devicePixelRatio = 1;
             addTearDown(tester.view.reset);
+            FlutterErrorDetails? first;
+            FlutterError.onError = (d) {
+              if (first == null) FlutterError.dumpErrorToConsole(d);
+              first ??= d;
+            };
             final container = ProviderContainer();
             addTearDown(container.dispose);
             await tester.pumpWidget(UncontrolledProviderScope(container: container, child: const MediQApp()));
@@ -83,6 +88,11 @@ void main() {
               await tester.pump(const Duration(milliseconds: 250));
             }
             final ex = tester.takeException();
+            if (first != null) {
+              final t = first!.toString() + (first!.informationCollector?.call().map((e) => e.toStringDeep()).join('\n') ?? '');
+              // ignore: avoid_print
+              print('FIRST ERROR on $route:\n${t.substring(0, t.length > 4000 ? 4000 : t.length)}');
+            }
             expect(ex, isNull, reason: 'Exception on $route: $ex');
             await tester.pumpWidget(const SizedBox());
             await tester.pump(const Duration(seconds: 3));

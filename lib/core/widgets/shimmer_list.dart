@@ -45,13 +45,18 @@ class ShimmerList extends StatelessWidget {
           ShimmerBox(width: itemHeight - 28 > 84 ? 84 : itemHeight - 28, height: itemHeight - 28 > 84 ? 84 : itemHeight - 28, radius: 22),
           const SizedBox(width: 14),
           Expanded(
-            child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: const [
-              ShimmerBox(width: 150, height: 16),
-              SizedBox(height: 10),
-              ShimmerBox(width: 100, height: 12),
-              SizedBox(height: 10),
-              ShimmerBox(height: 12),
-            ]),
+            child: ClipRect(
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+                  ShimmerBox(width: 150, height: 16),
+                  SizedBox(height: 10),
+                  ShimmerBox(width: 100, height: 12),
+                  SizedBox(height: 10),
+                  ShimmerBox(height: 12),
+                ]),
+              ),
+            ),
           ),
         ]),
       ),
