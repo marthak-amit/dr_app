@@ -164,7 +164,7 @@ class _VideoCallScreenState extends ConsumerState<VideoCallScreen> {
                   final n = (_selfPos ?? defaultPos) + u.delta;
                   _selfPos = Offset(n.dx.clamp(8.0, size.width - selfW - 8), n.dy.clamp(pad.top + 64, size.height - selfH - 180));
                 }),
-                child: _SelfView(w: selfW, h: selfH, camOff: _camOff, muted: _muted, onFlip: () => showAppSnack(context, 'Camera flipped', icon: Icons.flip_camera_android_rounded)),
+                child: _SelfView(name: ref.read(sessionProvider).profile.name, w: selfW, h: selfH, camOff: _camOff, muted: _muted, onFlip: () => showAppSnack(context, 'Camera flipped', icon: Icons.flip_camera_android_rounded)),
               ).animate().fadeIn(duration: 400.ms).scale(begin: const Offset(.8, .8), curve: Curves.easeOutBack),
             ),
           // connecting overlay
@@ -261,13 +261,13 @@ class _Connecting extends StatelessWidget {
 }
 
 class _SelfView extends StatelessWidget {
-  const _SelfView({required this.w, required this.h, required this.camOff, required this.muted, required this.onFlip});
+  const _SelfView({required this.w, required this.h, required this.camOff, required this.muted, required this.onFlip, required this.name});
+  final String name;
   final double w, h;
   final bool camOff, muted;
   final VoidCallback onFlip;
   @override
   Widget build(BuildContext context) {
-    final name = ProviderScope.containerOf(context).read(sessionProvider).profile.name;
     return Container(
       width: w,
       height: h,

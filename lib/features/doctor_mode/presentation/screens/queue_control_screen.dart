@@ -87,7 +87,7 @@ class _QueueControlScreenState extends ConsumerState<QueueControlScreen> {
                     const SizedBox(height: 20),
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 350),
-                      transitionBuilder: (c, a) => FadeTransition(opacity: a, child: SizeTransition(sizeFactor: a, axisAlignment: -1, child: c)),
+                      transitionBuilder: (c, a) => FadeTransition(opacity: a, child: SizeTransition(sizeFactor: a, alignment: Alignment.topCenter, child: c)),
                       child: q.current != null
                           ? _NowCard(key: ValueKey(q.current!.id), entry: q.current!, onDone: () {
                               _haptic();
@@ -228,7 +228,6 @@ class _NowCard extends StatelessWidget {
   final VoidCallback onDone, onNext, onOpen;
   @override
   Widget build(BuildContext context) {
-    final p = context.pal;
     return Container(
       decoration: BoxDecoration(
         borderRadius: AppRadius.rXl,
@@ -264,8 +263,6 @@ class _NowCard extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(child: _CardBtn(label: 'Call next', icon: Icons.campaign_rounded, onTap: onNext, filled: true)),
         ]),
-        const SizedBox(height: 0),
-        SizedBox(height: 0, child: Text('', style: TextStyle(color: p.bg))),
       ]),
     );
   }

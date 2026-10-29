@@ -107,7 +107,7 @@ class _Body extends StatelessWidget {
           _Row(icon: video ? Icons.videocam_rounded : Icons.local_hospital_rounded, label: 'Consultation', value: typeLabel(a.type)),
           _Row(icon: Icons.person_outline_rounded, label: 'Patient', value: a.patientName),
           _Row(icon: Icons.medical_information_outlined, label: 'Reason', value: a.reason),
-          _Row(icon: Icons.tag_rounded, label: 'Booking ID', value: 'MQ${a.id.replaceAll(RegExp(r'[^0-9a-z]'), '').toUpperCase().padLeft(6, '0').substring(0, 6)}', last: true),
+          _Row(icon: Icons.tag_rounded, label: 'Booking ID', value: bookingCode(a), last: true),
         ]),
       ),
       // Clinic
