@@ -76,6 +76,20 @@ All assets are generated locally and bundled: doctor portraits are illustrated a
 
 ## Downloads & screenshots
 
-- Ready-to-install Android build: [`releases/MediQ-prototype.apk`](releases/MediQ-prototype.apk) (release, signed with the debug key — fine for demos).
+- **Install this on almost every phone (2017+):** [`releases/MediQ-arm64-v8a.apk`](releases/MediQ-arm64-v8a.apk) (22 MB). Older 32-bit phones: [`releases/MediQ-armeabi-v7a.apk`](releases/MediQ-armeabi-v7a.apk).
+- Requires Android 7.0+. Signed with a real release key (v2 + v3 signature), 16 KB page-aligned, R8-shrunk.
+- If Android says *App not installed*: uninstall any older MediQ first (earlier builds used a different signing key), then allow *Install unknown apps* for the app you open the APK from.
 - Screenshots of every screen (390×844 @2x, light + dark): [`screenshots/`](screenshots/) — start with the `overview_*.png` contact sheets.
-- iOS: open `ios/` in Xcode on a Mac (`flutter build ios`); no code changes needed.
+- iOS: open `ios/` in Xcode on a Mac (`flutter build ios`).
+
+## Release signing
+
+`android/app/build.gradle.kts` signs release builds with `android/key.properties` + `android/app/mediq-release.jks` (both git-ignored).
+Create your own with:
+
+```bash
+keytool -genkeypair -keystore android/app/mediq-release.jks -alias mediq -keyalg RSA -keysize 2048 -validity 10000
+# android/key.properties: storePassword=… keyPassword=… keyAlias=mediq storeFile=mediq-release.jks
+flutter build apk --release --split-per-abi   # per-ABI APKs
+flutter build appbundle --release             # Play Store .aab
+```
